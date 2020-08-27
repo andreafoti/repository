@@ -40,8 +40,27 @@ var getJSONData = function(url){
     });
 }
 
+function searchbarFilter () {
+  let htmlContentToAppend = ""
+  let busqueda = document.getElementById("buscar").value;
+  console.log(busqueda)
+
+}
+
+searchbarFilter ();
+
+document.getElementById("navegador").innerHTML += `
+<input type="search" id="buscar" placeholder="Buscar...">
+`
+let searchbar = document.getElementById("buscar")
+
+searchbar.addEventListener("keypress", (event) => {
+
+});
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 });
+

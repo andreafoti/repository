@@ -14,7 +14,7 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
+    <nav class="site-header sticky-top py-1 bg-dark" id="navegador"> 
       <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
@@ -23,11 +23,39 @@
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
       </div>
     </nav>
+    <div class="text-center p-4">
+      <h2>Productos</h2>
+      <p class="lead">Verás aquí los productos del sitio.</p>
+    </div>
+    <div class="container">
+     <div class="row">
+       <div class="col text-right">
+          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+             <label class="btn btn-light active" id="sortAsc" >
+               <input type="radio" name="options" autocomplete="off" checked>$Menor a mayor$
+             </label>
+             <label class="btn btn-light" id="sortDesc" >
+               <input type="radio" name="options" autocomplete="off">$Mayor a menor$
+              </label>
+              <label class="btn btn-light" id="sortByCount" >
+                <input type="radio" name="options" autocomplete="off">Relevancia
+             </label>
+        </div>
+      </div>
+    </div>
+    <form action="" onsubmit="fillProductsList(event)">
+      <fieldset>
+        <legend>Precio</legend>
+        <input type="number" id="min" placeholder="mín." value="" min="0" required>
+        <input type="number" id="max" placeholder="máx." value="" min="0" required> 
+      </fieldset>
+      <button type="submit">Filtrar</button>
+    </form>
     <div class="row">
       <div class="list-group" id="prod-list-container">
       </div>
     </div>
-    </div>
+    
     <footer class="text-muted bg-light">
       <div class="container">
         <p class="float-right">

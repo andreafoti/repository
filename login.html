@@ -26,7 +26,7 @@
       justify-content: center;
       padding-top: 40px;
       padding-bottom: 40px;
-      background-color: #d3e3f1;
+      background-color: #caddc7f3;
     }
 
     .login {
@@ -37,49 +37,53 @@
     }
 
     button {
-      color: aliceblue;
-      background-color: rgb(1, 36, 66);
+      color: rgba(186, 252, 177, 0.993);
+      background-color: #385D14;
     }
 
     h1 {
-      color: rgb(1, 36, 66);
+      color: #D61C6C;
       padding-bottom: 10px;
     }
 
     fieldset {
-      background-color: aliceblue;
+      background-color: #f4f4f5e1;
       padding: 40px;
-      border-style: solid;
-      border-width: 5px;
-      border-radius: 40px;
-      border-color: rgb(1, 36, 66);
+
     }
 
     .field {
       border-style: solid;
-      border-color: rgb(1, 36, 66);
+      border-color: #4B4B4D;
       margin-bottom: 10px;
+    }
+
+    .imgYForm {
+      width: 30em;
+    }
+
+    img {
+      width: 30em;
     }
   </style>
 </head>
 
 <body class="text-center">
-  <div>
+  <div class="imgYForm">
+    <img src="img/login.png">
     <fieldset>
-      <h1>Please log in</h1>
+      <h1>Ingresar aquí</h1>
       <form action="#" onsubmit="onSubmit(event)">
         <div>
-          <input class="field" id="correo" name="correo" type="email" placeholder="Email address..." required>
+          <input class="field" id="correo" name="correo" type="email" placeholder="Correo electrónico..." required>
        </div>
        <div>
-          <input class="field" id="password" name="password" type="password" placeholder="Password..." required>
+          <input class="field" id="password" name="password" type="password" placeholder="Contraseña..." required>
        </div>
        <div class="login">
-         <button type="submit">Log in</button>
+         <button type="submit">Ingresar</button>
       </form>
     </fieldset>
-      </div>
-    
   </div>
 
   <script src="js/init.js"></script>
