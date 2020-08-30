@@ -47,22 +47,20 @@
       <div class="col-md-6"></div>
         <div class="col-md-6 col-sm-12 mb-1 container">
           <div class="row container p-0 m-0">
-            <form action="" onsubmit="fillProductsList(event)">
-              <div class="col">
-                <p class="font-weight-normal text-right my-2">Precio</p>
+            <div class="col">
+              <p class="font-weight-normal text-right my-2">Precio</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" id="min" placeholder="mín." value="" min="0" required>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" id="max" placeholder="máx." value="" min="0" required>
+            </div> 
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="filterButton">Filtrar</button>
               </div>
-              <div class="col">
-                <input type="number" id="min" placeholder="mín." value="" min="0" required>
-              </div>
-              <div>
-                <input type="number" id="max" placeholder="máx." value="" min="0" required>
-              </div> 
-              <div class="col-3 p-0">
-                <div class="btn-group" role="group">
-                  <button class="btn btn-light btn-block" type="submit">Filtrar</button>
-                </div>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
     </div>

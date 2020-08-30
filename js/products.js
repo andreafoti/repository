@@ -139,6 +139,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
+    document.getElementById("filterButton").addEventListener("click", function(){
+        fillProductsList(event)
+    })
+
     document.getElementById("sortCostAsc").addEventListener("click", function(){
         fillSortedProducts(ORDER_ASC_BY_COST, event);
     })
