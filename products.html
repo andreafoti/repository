@@ -14,8 +14,8 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark" id="navegador"> 
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <nav class="site-header sticky-top py-1 bg-dark"> 
+      <div class="container d-flex flex-column flex-md-row justify-content-between" id="navegador">
         <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
@@ -31,26 +31,43 @@
      <div class="row">
        <div class="col text-right">
           <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-             <label class="btn btn-light active" id="sortAsc" >
+             <label class="btn btn-light active" id="sortCostAsc" >
                <input type="radio" name="options" autocomplete="off" checked>$Menor a mayor$
              </label>
-             <label class="btn btn-light" id="sortDesc" >
+             <label class="btn btn-light" id="sortCostDesc" >
                <input type="radio" name="options" autocomplete="off">$Mayor a menor$
               </label>
-              <label class="btn btn-light" id="sortByCount" >
+              <label class="btn btn-light" id="sortBySoldCount" >
                 <input type="radio" name="options" autocomplete="off">Relevancia
              </label>
         </div>
       </div>
     </div>
-    <form action="" onsubmit="fillProductsList(event)">
-      <fieldset>
-        <legend>Precio</legend>
-        <input type="number" id="min" placeholder="mín." value="" min="0" required>
-        <input type="number" id="max" placeholder="máx." value="" min="0" required> 
-      </fieldset>
-      <button type="submit">Filtrar</button>
-    </form>
+    <div class="row justify-content-end">
+      <div class="col-md-6"></div>
+        <div class="col-md-6 col-sm-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <form action="" onsubmit="fillProductsList(event)">
+              <div class="col">
+                <p class="font-weight-normal text-right my-2">Precio</p>
+              </div>
+              <div class="col">
+                <input type="number" id="min" placeholder="mín." value="" min="0" required>
+              </div>
+              <div>
+                <input type="number" id="max" placeholder="máx." value="" min="0" required>
+              </div> 
+              <div class="col-3 p-0">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-light btn-block" type="submit">Filtrar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+      
+    </div>
     <div class="row">
       <div class="list-group" id="prod-list-container">
       </div>

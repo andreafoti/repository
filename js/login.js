@@ -7,11 +7,12 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 function onSubmit(event){
     event.preventDefault()
-    const email = document.querySelector("#correo").nodeValue;
-    const password =document.querySelector("#password").nodeValue;
+    let email = document.querySelector('#correo').value;
+    let password = document.querySelector("#password").value;
     if(email != "" && password !=""){
         window.location = "index.html";
         sessionStorage.setItem('isLogged', 'true');
+        sessionStorage.setItem('correo', email);
     }
     
 }
