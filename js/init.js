@@ -43,25 +43,9 @@ var getJSONData = function(url){
 let usuario = sessionStorage.getItem('correo');
 
 document.getElementById("navegador").innerHTML += `
-<input type="search" id="buscar" placeholder="Buscar...">
 <a class="py-2 d-none d-md-inline-block" href="index.html">` + usuario + `</a>
 `
 
-// function searchbarFilter () {
-//   let htmlContentToAppend = ""
-//   let busqueda = document.getElementById("buscar").value;
-//   console.log(busqueda)
-
-// }
-
-// searchbarFilter ();
-
-
-// let searchbar = document.getElementById("buscar")
-
-// searchbar.addEventListener("keypress", (event) => {
-
-// });
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 function onSubmit(event){
     event.preventDefault()
     let email = document.querySelector('#correo').value;
+    console.log(email);
     let password = document.querySelector("#password").value;
     if(email != "" && password !=""){
         window.location = "index.html";

@@ -7,7 +7,7 @@ function showProductsList(array) {
     for (let i = 0; i < array.length; i++) {
         let product = array[i];
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <a href="product-info.html" class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                     <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
@@ -20,14 +20,13 @@ function showProductsList(array) {
                     <div>` + product.description + `</div>
                 </div>
             </div>
-        </div>
+        </a>
         `
     }
     container.innerHTML = htmlContentToAppend;
 }
 
-function showFilteredProductsList(array) {
-    let htmlContentToAppend = "";
+function filterProducts(array) {
     try {
         
         let precioMinimo = parseInt(document.getElementById("min").value);
@@ -42,27 +41,7 @@ function showFilteredProductsList(array) {
             throw new Error("No se han encontrado productos con los filtros seleccionados.")
         }
 
-        let container = document.getElementById("prod-list-container");
-        for (let i = 0; i < filteredProducts.length; i++) {
-            let product = filteredProducts[i];
-            htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name + `</h4>
-                            <small class="text-muted"> USD ` + product.cost + ` </small>
-                        </div>
-                        <div>` + product.description + `</div>
-                    </div>
-                </div>
-            </div>
-            `
-        }
-        container.innerHTML = htmlContentToAppend;
+        return filteredProducts;
     } catch (error) {
         
         alert(error.message)
@@ -125,6 +104,28 @@ function fillSortedProducts(sortCriteria, event) {
         }
     });
 }
+
+function filterProductsSearch(array){
+    let busqueda = document.getElementById("buscar").value.toLowerCase();
+    let filteredProductsSearch = array.filter(element => element.name.toLowerCase().indexOf(busqueda)>=0 || element.description.toLowerCase().indexOf(busqueda)>=0);
+    return filteredProductsSearch;
+}
+
+function fillProductsListSearch(){
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            productsArray = resultObj.data;
+            //Muestro las categorías ordenadas
+            productsArray = filterProductsSearch(productsArray);
+            showProductsList(productsArray);
+        }
+    });
+}
+  
+  
+  
+  
+  
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -154,6 +155,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("sortBySoldCount").addEventListener("click", function(){
         fillSortedProducts(ORDER_BY_SOLD_COUNT, event);
     })
+
+    document.getElementById("buscar").addEventListener("search", (event) => {
+        fillProductsListSearch();
+      });
+      document.getElementById("buscar").addEventListener("keyup", (event) => {
+        fillProductsListSearch();
+      });
 });
 
 function fillProductsList(event) {
@@ -163,7 +171,8 @@ function fillProductsList(event) {
         if (resultObj.status === "ok") {
             productsArray = resultObj.data;
             //Muestro las categorías ordenadas
-            showFilteredProductsList(productsArray);
+            productsArray = filterProducts(productsArray);
+            showProductsList(productsArray);
             hideSpinner();
         }
     });
