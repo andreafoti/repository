@@ -40,6 +40,10 @@ var getJSONData = function(url){
     });
 }
 
+if(!sessionStorage.getItem("isLogged")){
+  location.href = "login.html"
+}
+
 let usuario = sessionStorage.getItem('correo');
 
 document.getElementById("navegador").innerHTML += `

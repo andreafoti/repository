@@ -1,5 +1,6 @@
 let product = {};
 let comments = [];
+let products = [];
 
 function showImagesGallery(array){
 
@@ -67,6 +68,25 @@ function addNewComment(event){
     document.getElementById("comm-list-container").innerHTML += htmlContentToAppend;
     
 }
+
+function showRelatedProducts(array, productPosition){
+    let relatedProduct = array[productPosition];
+    let htmlContentToAppend = `
+    <a href="product-info.html?selectedProd=` + relatedProduct.name + `" class="list-group-item list-group-item-action col-8">
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="` + relatedProduct.imgSrc + `">
+            </div>
+            <div>
+                <h4 class="mb-1">` + relatedProduct.name + `</h4>
+            <div>
+            <div>` + relatedProduct.cost + relatedProduct.currency + `</div>
+        </div>
+    `
+    document.getElementById("relatedProducts").innerHTML += htmlContentToAppend;
+}
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -81,8 +101,11 @@ document.addEventListener("DOMContentLoaded", function(e){
             let productCostHTML = document.getElementById("productCost");
             let productSoldCountHTML = document.getElementById("productSoldCount");
             let productCategoryHTML = document.getElementById("productCategory");
+
+            let params = new URLSearchParams(location.search);
+            var selectedProd = params.get('selectedProd');
         
-            productNameHTML.innerHTML = product.name;
+            productNameHTML.innerHTML = selectedProd;
             productDescriptionHTML.innerHTML = product.description;
             productCostHTML.innerHTML = product.cost + " " + product.currency;
             productSoldCountHTML.innerHTML = product.soldCount;
@@ -90,6 +113,14 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             //Muestro las imagenes en forma de galería
             showImagesGallery(product.images);
+            getJSONData(PRODUCTS_URL).then(function(resultObj){
+                if (resultObj.status === "ok")
+                {
+                    products = resultObj.data;
+                    showRelatedProducts(products, product.relatedProducts[0]);
+                    showRelatedProducts(products, product.relatedProducts[1]);
+                }
+            })
         }
     });
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {

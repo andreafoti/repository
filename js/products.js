@@ -7,7 +7,7 @@ function showProductsList(array) {
     for (let i = 0; i < array.length; i++) {
         let product = array[i];
         htmlContentToAppend += `
-        <a href="product-info.html" class="list-group-item list-group-item-action">
+        <a href="product-info.html?selectedProd=` + product.name + `" class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                     <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
@@ -33,9 +33,9 @@ function filterProducts(array) {
         let precioMaximo = parseInt(document.getElementById("max").value);
 
         if (precioMinimo >= precioMaximo) {            
-            throw new Error("El precio mínimo no puede ser mayor que el precio máximo.")
+            throw new Error("El precio mínimo no puede ser mayor o igual que el precio máximo.")
         }
-        let filteredProducts = array.filter(element => element.cost >= precioMinimo && element.cost <= precioMaximo)
+        let filteredProducts = array.filter(element => !precioMinimo || element.cost >= precioMinimo && !precioMaximo || element.cost <= precioMaximo)
 
         if(!filteredProducts.length) {
             throw new Error("No se han encontrado productos con los filtros seleccionados.")
@@ -43,8 +43,20 @@ function filterProducts(array) {
 
         return filteredProducts;
     } catch (error) {
-        
-        alert(error.message)
+
+        let htmlContentToAppend = `
+        <div class="container p-5">
+            <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
+                <h4 class="alert-heading">Error :(</h4>
+                <p>` + error.message + `</p>
+                <hr>
+                <p class="mb-0">Para continuar, recargue la página o aplique filtros válidos.</p>
+            </div>
+        </div>
+        `
+
+        document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
+        // alert(error.message)
     }
 
 }
