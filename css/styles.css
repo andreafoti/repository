@@ -139,3 +139,45 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.carousel {
+  width: 500px;
+}
+
+.cantidad {
+  width: 20%
+}
+
+.en-total {
+  padding-top: 20px; 
+}
+
+.cart-product {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* padding: 50px; */
+  /* width: 400px */
+  
+}
+
+#cart-summary {
+  padding-top: 15px;
+  text-align: center;
+}
+
+#cart-final-summary {
+  text-align: center;
+  color: rgb(255, 115, 0);
+  font-size: large;
+}
+
+#metodoEnvio {
+  padding-top: 15px;
+}
+
+#comprar {
+  margin-top: 20px;
+}
+
+.tramites {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

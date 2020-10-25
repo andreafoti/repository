@@ -4,20 +4,49 @@ let products = [];
 
 function showImagesGallery(array){
 
-    let htmlContentToAppend = "";
 
-    for(let i = 0; i < array.length; i++){
+    let htmlContentToAppend = `
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>`;
+
+    for (let i = 1; i < array.length; i++){
+        htmlContentToAppend += `
+        <li data-target="#carouselExampleIndicators" data-slide-to="` + i + `"></li>
+        `
+    }
+    
+    htmlContentToAppend += `
+    </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="` + product.images[0] + `" class="d-block w-100" alt="...">
+    </div>
+    `
+  
+    for(let i = 1; i < array.length; i++){
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
+        <div class="carousel-item">
+        <img src="` + imageSrc + `" class="d-block w-100" alt="...">
         </div>
         `
-
     }
+
+    htmlContentToAppend += `
+    </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    `
+
     document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
 }
 

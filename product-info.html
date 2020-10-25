@@ -22,7 +22,6 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
   <main role="main">
@@ -71,11 +70,20 @@
       <h3>Comentarios y puntuaciones</h3>
       <hr class="my-3">
       <form action="#" onsubmit="addNewComment(event)">
-        <label for="puntuacion">Puntuación(1 a 5)</label>
-        <input type="number" min="1" max="5" id="puntuacion" required>
-        <input type="text" placeholder="Agregar comentario..." id="nuevoComentario">
-        <div class="btn-group" role="group">
-          <button class="btn btn-light btn-block" type="submit">Publicar</button>
+        <div class="col-md-6"></div>
+        <div class="col-md-6 col-sm-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <label for="puntuacion">Puntuación(1 a 5):</label>
+              <input type="number" min="1" max="5" id="puntuacion" required>
+            </div>
+            <div class="col">
+              <textarea placeholder="Agregar comentario..." id="nuevoComentario"></textarea>
+            </div>
+            <div class="btn-group" role="group">
+              <button class="btn btn-light btn-block" type="submit">Publicar</button>
+            </div>
+          </div>
         </div>
       </form>
       <div id="comm-list-container"></div>

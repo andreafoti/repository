@@ -40,17 +40,82 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="text-center p-4">
+    <h2>Mi carrito</h2>
+    <p class="lead">Verás aquí los productos del carrito.</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8" id="cart-list-container">
+      </div>
+      <div class="col-md-3 offset-md-1 card tramites">
+        <div class="cart-summary" id="cart-summary"></div>
+        <hr class="my-3">
+        <h5>Envío</h5>
+        <input type="text" id="direccion" class="form-control" placeholder="Dirección...">
+        <input type="text" id="pais" class="form-control" placeholder="País...">
+        <div class="custom-control custom-radio" id="metodoEnvio">
+          <input id="estandar" name="cartType" type="radio" class="custom-control-input" checked="" required="">
+          <label class="custom-control-label" for="estandar">Standard - 12 a 15 días - 5%</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="express" name="cartType" type="radio" class="custom-control-input" required="">
+          <label class="custom-control-label" for="express">Express - 5 a 8 días - 7%</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="premium" name="cartType" type="radio" class="custom-control-input" required="">
+          <label class="custom-control-label" for="premium">Premium - 2 a 5 días - 15%</label>
+        </div>
+        <hr class="my-3">
+        <div id="cart-final-summary"></div>
+        <hr class="my-3">
+        <h5>Método de pago</h5>
+        <button type="button" class="btn btn-light" data-toggle="" data-target="">
+          Transferencia bancaria
+        </button>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+          Tarjeta de crédito
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Datos de la tarjeta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <form id="datosTarjeta" onsubmit="enviarDatos(event)" method="GET" action="">
+                    <label for="numeroTarjeta">Número de tarjeta:</label>
+                    <input class="form-control" id="numeroTarjeta" type="text" name="numeroDeTarjeta">
+                    <label for="fechaVencimiento">Fecha de vencimiento:</label>
+                    <input class="form-control" id="fechaVencimiento" type="text" name="vencimiento">
+                    <label for="codigoSeguridad">Código de seguridad:</label>
+                    <input class="form-control" id="codigoSeguridad" type="text" name="codigoDeSeguridad">
+                  </form>
+                  <div id="alert"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Atrás</button>
+                <button type="submit" form="datosTarjeta" class="btn btn-primary">Enviar datos</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="comprar" type="button" class="btn btn-primary">Comprar</button>
+      </div>
     </div>
   </div>
+  
+  
+  <!-- <div class="card mb-3 cart-product" style="max-width: 540px;">
+    <div class="row no-gutters" id="cart-list-container"></div>
+  </div>  -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -59,11 +124,30 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+
+  <!-- <div class="card mb-3 cart-product" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="`+ cartProduct.src + `" class="card-img">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h4 class="card-title">` + cartProduct.name + `</h4>
+                <p class="card-text"><small class="text-muted">Precio unitario: ` + cartProduct.currency + ` ` + cartProduct.unitCost.toLocaleString() + ` </small></p>
+                <div> Cantidad: 
+                    <input oninput="changeCount(`+ i +`)" class="cantidad form-control" type="number" value="` + cartProduct.count + `"> 
+                </div>
+                <h5 class"en-total">Total: UYU <span class="subtotal">` + valorCount.toLocaleString() + `</span></h5>
+            </div>
+        </div>
+    </div>
+</div> -->
 </body>
 
 </html>
