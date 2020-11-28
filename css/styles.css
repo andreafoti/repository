@@ -181,3 +181,16 @@ a.custom-card:hover {
 .tramites {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.mi-perfil {
+  font-weight: bold;
+}
+
+.list-group-flush {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#button-perfil {
+  margin-left: 20px;
+}

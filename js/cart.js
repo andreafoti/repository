@@ -5,7 +5,6 @@ const premiumShipping = 15
 const items = [];
 const cart = {
     total: 0,
-    // totalFinal: this.total + ((this.total * standardShipping)/100),  
     async inicializarCart() {
         await cargarContenido();
         this.dibujarContenido();
@@ -22,7 +21,6 @@ const cart = {
 
         dibujarCartSummary(this.total)
 
-        // dibujarCartFinalSummary(this.totalFinal)
     },
 
 }
@@ -51,10 +49,7 @@ const dibujarCartSummary = (total) => {
     })
 }
 
-// const dibujarCartFinalSummary = (totalFinal) => {
-//     const finalSummary = document.getElementById("cart-final-summary");
-//     finalSummary.innerHTML = "Total: " + new Intl.NumberFormat('uy-ES', { style: 'currency', currency: 'UYU' }).format(totalFinal);
-// }
+
 
 const cargarContenido = async () => {
     showSpinner();
@@ -91,25 +86,20 @@ cartItem.prototype = {
         return this.dibujarCartItem();
     },
     dibujarCartItem() {
-        const row = document.createElement("div");
-        row.innerHTML = `
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8"></div>                    
-                </div>
-            </div>
-        </div>
+        const card = document.createElement("div");
+        card.setAttribute('class', 'card');
+        card.innerHTML = `
+        <div class="imagen-carta"></div>
+        <div class="contenido-carta"></div>                    
         `;
 
-        row.querySelector(".col-md-4").innerHTML = this.dibujarImagen();
-        row.querySelector(".col-md-8").appendChild(this.dibujarBody())
-        return row;
+        card.querySelector(".imagen-carta").innerHTML = this.dibujarImagen();
+        card.querySelector(".contenido-carta").appendChild(this.dibujarBody())
+        return card;
     },
     dibujarImagen() {
         return `         
-            <img src="${this.item.src}" class="card-img">        
+            <img src="${this.item.src}" class="card-img-top">        
         `
     },
     dibujarBody() {
@@ -139,12 +129,10 @@ cartItem.prototype = {
             const subTotal = this.recalcularMonto(event.currentTarget.value || 0);
 
             if (this.total > subTotal) {
-                debugger
-                const saldo = cart.total - (this.total -subTotal )
+                const saldo = cart.total - (this.total - subTotal)
                 dibujarCartSummary(saldo);
             } else {
-                debugger
-                const saldo = cart.total + (subTotal - this.total )
+                const saldo = cart.total + (subTotal - this.total)
                 dibujarCartSummary(saldo);
             }
 

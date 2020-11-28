@@ -42,12 +42,49 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="text-center p-4">
+    <h2>Mi perfil</h2>
+    <p class="lead">Verás aquí los datos de su perfil.</p>
+  </div>
+  <div class="container">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><span class="mi-perfil">Nombres y apellidos: </span><span id="nombresYApellidos"></span></li>
+      <li class="list-group-item"><span class="mi-perfil">Edad: </span><span id="edad"></span></li>
+      <li class="list-group-item"><span class="mi-perfil">E-mail: </span><span id="email"></span></li>
+      <li class="list-group-item"><span class="mi-perfil">Teléfono de contacto: </span><span id="telefono"></span></li>
+    </ul>
+    <div class="row">
+      <button id="button-perfil" class="btn btn-secondary" type="button" data-toggle="modal" data-target="#exampleModal">Modificar datos</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Datos de la tarjeta</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <form id="datosPerfil" onsubmit="cambiarPerfil(event)" method="" action="">
+                  <label for="cambioNombresYApellidos">Nombres y apellidos:</label>
+                  <input class="form-control" id="cambioNombresYApellidos" type="text">
+                  <label for="cambioEdad">Edad:</label>
+                  <input class="form-control" id="cambioEdad" type="text">
+                  <label for="cambioEmail">E-mail:</label>
+                  <input class="form-control" id="cambioEmail" type="text">
+                  <label for="cambioTelefono">Teléfono de contacto:</label>
+                  <input class="form-control" id="cambioTelefono" type="text">
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Atrás</button>
+              <button type="submit" form="datosPerfil" class="btn btn-primary">Confirmar datos</button>
+            </div>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
   <footer class="text-muted bg-light">
